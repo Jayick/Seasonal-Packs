@@ -1,0 +1,283 @@
+<configs>
+	<append xpath="/items">
+		<item name="Love Hammer">
+			<property name="Tags" value="blunt,melee,heavy,sledge,meleeWeapon,perkHeavyMetal,weapon"/>
+			<property name="DisplayType" value="melee"/>
+			<property name="HoldType" value="33"/>
+			<property name="Meshfile" value="#@modfolder:Resources/HeartHammer.unity3d?HeartHammerPrefab"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="CustomIcon" value="hearthammer"/>
+			<property name="RepairTools" value="resourceForgedSteel"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="EconomicValue" value="600"/>
+			<property name="SoundJammed" value="ItemNeedsRepair"/>
+			<property name="SoundDestroy" value="metaldestroy1"/>
+			<property name="Weight" value="200"/>
+			<property name="Group" value="Ammo/Weapons"/>
+			<property name="ActionSkillGroup" value="Blade Weapons"/>
+			<property name="CraftingSkillGroup" value="craftSkillWeapons"/>
+			<property name="RepairExpMultiplier" value="5.5"/>
+			<property class="Action0">
+				<property name="Class" value="DynamicMelee"/>
+				<property name="Damage_type" value="Slashing"/>
+				<property name="Sphere" value="0.15"/>
+				<property name="Sound_start" value="swoosh"/></property>
+			<property class="Action1">
+				<property name="Class" value="DynamicMelee"/>
+				<property name="Damage_type" value="Slashing"/>
+				<property name="Sphere" value="0.15"/>
+				<!-- limit to 0.15, else the sphere cast can overlap the target already -->
+				<property name="Sound_start" value="swoosh"/>
+				<property name="UsePowerAttackAnimation" value="true"/></property>
+			<effect_group name="Base Effects">
+				<passive_effect name="MaxRange" operation="base_set" value="2.9"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3.5"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="48"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="50"/>
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="55"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="25" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="700,1100" tier="1,6"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="DismemberChance" operation="base_add" value=".2" tags="secondary"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_subtract" value="0" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_add" value="29" tags="secondary"/>
+			</effect_group>
+		</item>
+		<item name="Heart Arrow">
+			<property name="Extends" value="ammoArrowStone"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Meshfile" value="#@modfolder:Resources/HeartArrow.unity3d?HeartArrow"/>
+			<property name="HandMeshfile" value="#@modfolder:Resources/HeartArrow.unity3d?HeartArrow"/>
+			<property name="DropMeshfile" value="#@modfolder:Resources/HeartArrow.unity3d?HeartArrow"/>
+			<property name="EconomicValue" value="25"/>
+			<property name="CustomIcon" value="heartarrow"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property name="Group" value="Ammo/Weapons"/>
+			<property class="Action1">
+				<property name="Gravity" value="-1.5"/></property>
+			<effect_group name="Base Effects" tiered="false">
+				<!-- ammoArrowIron -->
+				<passive_effect name="EntityDamage" operation="base_set" value="28"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="3"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0.1" tags="wood"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="PlaySound" sound="kiss"/>
+				<passive_effect name="ProjectileVelocity" operation="base_set" value="30"/>
+				<passive_effect name="ProjectileStickChance" operation="perc_set" value="0" tags="glass"/>
+			</effect_group>
+		</item>
+		<item name="Blue MM">
+			<property name="HoldType" value="40"/>
+			<property name="Meshfile" value="#@modfolder:Resources/MM.unity3d?MBl"/>
+			<!-- <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/> -->
+			<property name="DropScale" value="6"/>
+			<property name="CustomIcon" value="mbl"/>
+			<property name="Material" value="MresourceSnowBall"/>
+			<property name="Weight" value="5"/>
+			<property name="Stacknumber" value="6000"/>
+			<!-- STK resource -->
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="150"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<property name="Delay" value="1.2"/>
+				<property name="Throw_strength_default" value="10"/>
+				<property name="Throw_strength_max" value="35"/>
+				<property name="Max_strain_time" value="1"/>
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+			<effect_group name="Base Effects">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration=".5">
+									<requirement name="RandomRoll" seed_type="Random" target="other" min_max="0,100" operation="LTE" value="99"/>
+					</triggered_effect>
+				</effect_group>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Group" value="Resources"/>
+		</item>
+		
+		<item name="Green MM">
+			<property name="HoldType" value="40"/>
+			<property name="Meshfile" value="#@modfolder:Resources/MM.unity3d?MG"/>
+			<!-- <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/> -->
+			<property name="DropScale" value="6"/>
+			<property name="CustomIcon" value="mg"/>
+			<property name="Material" value="MresourceSnowBall"/>
+			<property name="Weight" value="5"/>
+			<property name="Stacknumber" value="6000"/>
+			<!-- STK resource -->
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="150"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<property name="Delay" value="1.2"/>
+				<property name="Throw_strength_default" value="10"/>
+				<property name="Throw_strength_max" value="35"/>
+				<property name="Max_strain_time" value="1"/>
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+			<effect_group name="Base Effects">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration=".5">
+									<requirement name="RandomRoll" seed_type="Random" target="other" min_max="0,100" operation="LTE" value="99"/>
+					</triggered_effect>
+				</effect_group>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Group" value="Resources"/>
+		</item>
+		
+		<item name="Yellow MM">
+			<property name="HoldType" value="40"/>
+			<property name="Meshfile" value="#@modfolder:Resources/MM.unity3d?MY"/>
+			<!-- <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/> -->
+			<property name="DropScale" value="6"/>
+			<property name="CustomIcon" value="my"/>
+			<property name="Material" value="MresourceSnowBall"/>
+			<property name="Weight" value="5"/>
+			<property name="Stacknumber" value="6000"/>
+			<!-- STK resource -->
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="150"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<property name="Delay" value="1.2"/>
+				<property name="Throw_strength_default" value="10"/>
+				<property name="Throw_strength_max" value="35"/>
+				<property name="Max_strain_time" value="1"/>
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+			<effect_group name="Base Effects">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration=".5">
+									<requirement name="RandomRoll" seed_type="Random" target="other" min_max="0,100" operation="LTE" value="99"/>
+					</triggered_effect>
+				</effect_group>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Group" value="Resources"/>
+		</item>
+		
+		<item name="Red MM">
+			<property name="HoldType" value="40"/>
+			<property name="Meshfile" value="#@modfolder:Resources/MM.unity3d?MR"/>
+			<!-- <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/> -->
+			<property name="DropScale" value="6"/>
+			<property name="CustomIcon" value="mr"/>
+			<property name="Material" value="MresourceSnowBall"/>
+			<property name="Weight" value="5"/>
+			<property name="Stacknumber" value="6000"/>
+			<!-- STK resource -->
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="150"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<property name="Delay" value="1.2"/>
+				<property name="Throw_strength_default" value="10"/>
+				<property name="Throw_strength_max" value="35"/>
+				<property name="Max_strain_time" value="1"/>
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+			<effect_group name="Base Effects">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration=".5">
+									<requirement name="RandomRoll" seed_type="Random" target="other" min_max="0,100" operation="LTE" value="99"/>
+					</triggered_effect>
+				</effect_group>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Group" value="Resources"/>
+		</item>
+		
+		<item name="Orange MM">
+			<property name="HoldType" value="40"/>
+			<property name="Meshfile" value="#@modfolder:Resources/MM.unity3d?MO"/>
+			<!-- <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/> -->
+			<property name="DropScale" value="6"/>
+			<property name="CustomIcon" value="mo"/>
+			<property name="Material" value="MresourceSnowBall"/>
+			<property name="Weight" value="5"/>
+			<property name="Stacknumber" value="6000"/>
+			<!-- STK resource -->
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="150"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<property name="Delay" value="1.2"/>
+				<property name="Throw_strength_default" value="10"/>
+				<property name="Throw_strength_max" value="35"/>
+				<property name="Max_strain_time" value="1"/>
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+			<effect_group name="Base Effects">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration=".5">
+									<requirement name="RandomRoll" seed_type="Random" target="other" min_max="0,100" operation="LTE" value="99"/>
+					</triggered_effect>
+				</effect_group>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Group" value="Resources"/>
+		</item>
+		
+		<item name="Brown MM">
+			<property name="HoldType" value="40"/>
+			<property name="Meshfile" value="#@modfolder:Resources/MM.unity3d?MBr"/>
+			<!-- <property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/> -->
+			<property name="DropScale" value="4"/>
+			<property name="CustomIcon" value="mbr"/>
+			<property name="Material" value="MresourceSnowBall"/>
+			<property name="Weight" value="5"/>
+			<property name="Stacknumber" value="6000"/>
+			<!-- STK resource -->
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="150"/>
+			<property name="SellableToTrader" value="false"/>
+			<property class="Action0">
+				<property name="Class" value="ThrowAway"/>
+				<property name="Delay" value="1.2"/>
+				<property name="Throw_strength_default" value="10"/>
+				<property name="Throw_strength_max" value="35"/>
+				<property name="Max_strain_time" value="1"/>
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+			<effect_group name="Base Effects">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="Ragdoll" target="other" duration=".5">
+									<requirement name="RandomRoll" seed_type="Random" target="other" min_max="0,100" operation="LTE" value="99"/>
+					</triggered_effect>
+				</effect_group>
+			<property name="ThrowableDecoy" value="true"/>
+			<property name="Group" value="Resources"/>
+		</item>
+		
+		<item name="Chocolate Box">
+			<property name="HoldType" value="23"/>
+			<property name="Meshfile" value="#@modfolder:Resources/ChocolateBox.unity3d?ChocolateBox"/>
+			<property name="CustomIcon" value="chocolatebox"/>
+			<property name="DropMeshfile" value="#@modfolder:Resources/ChocolateBox.unity3d?ChocolateBox"/>
+			<property name="Material" value="Morganic"/>
+			<property name="Weight" value="1"/>
+			<property name="Stacknumber" value="5000"/>
+			<property name="EconomicValue" value="5"/>
+			<property name="Group" value="Food/Cooking"/>
+			<property name="CraftingIngredientExp" value="3"/>
+			<property name="CraftingIngredientTime" value="1"/>
+			<property name="DisplayType" value="food"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="1.0"/>
+				<property name="Use_time" value="..."/>
+				<property name="Sound_start" value="player_eating"/>
+			</property>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" target="self" buff="buffProcessConsumables"/>
+			</effect_group>
+		</item>
+		
+	</append>
+	
+<set xpath="items/item[@name='gunWoodenBow']/property[@class='Action0']/property[@name='Magazine_items' and @value='ammoArrowStone,ammoArrowIron,ammoArrowSteelAP,ammoArrowFlaming']/@value">ammoArrowStone,ammoArrowIron,ammoArrowSteelAP,ammoArrowFlaming,Heart Arrow</set>
+</configs>

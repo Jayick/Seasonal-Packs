@@ -1,0 +1,40 @@
+<configs>
+	<append xpath="/blocks">
+		<block name="Kiss Trap">
+			<property name="Class" value="TrunkTip"/>
+			<property name="Damage" value="7"/>
+			<property name="Damage_received" value="40"/>
+			<property name="Material" value="MtrapSpikesWood"/>
+			<property name="MaxDamage" value="1000"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="LightOpacity" value="6"/>
+			<property name="Model" value="#@modfolder:Resources/KissTrap.unity3d?KissTrap"/>
+			<property name="CustomIcon" value="kisstrap"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property class="RepairItems">
+				<property name="forgedSteel" value="10"/></property>
+			<property name="CustomUpgradeSound" value="place_block_metal"/>
+			<property name="EconomicValue" value="160"/>
+			<property name="Group" value="Tools/Traps,Science"/>
+		</block>
+		<block name="Gift Box">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="Loot"/>
+			<property name="CustomIcon" value="giftbox"/>
+			<property name="Material" value="MwoodReinforced"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Mesh" value="models"/>
+			<property name="Model" value="#@modfolder:Resources/GiftBox.unity3d?GiftBox"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="LootList" value="1"/>
+			<property class="RepairItems">
+				<property name="resourceWood" value="10"/></property>
+			<drop event="Destroy" name="resourceWood" count="1,3"/>
+			<drop event="Fall" name="terrDestroyedWoodDebris" count="1" prob="0.75" stick_chance="1"/>
+			<property name="FilterTags" value="floot"/>
+		</block>
+		
+
+	</append>
+</configs>

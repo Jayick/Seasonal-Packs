@@ -1,0 +1,46 @@
+<configs>
+	<append xpath="/recipes">
+	
+		<recipe name="Heart Arrow" count="1">
+			<ingredient name="resourceRockSmall" count="1"/>
+			<ingredient name="resourceWood" count="1"/>
+			<ingredient name="resourceFeather" count="1"/>
+		</recipe>
+		
+		<recipe name="Kiss Trap" count="1">
+			<ingredient name="resourceWood" count="20"/>
+			<ingredient name="resourceScrapIron" count="10"/>
+		</recipe>
+		
+		<recipe name="Gift Box" count="1">
+			<ingredient name="resourceWood" count="20"/>
+		</recipe>
+		
+		<recipe name="Love Hammer" count="1">
+			<ingredient name="resourceForgedIron" count="30"/>
+			<ingredient name="resourceWood" count="10"/>
+		</recipe>
+		<recipe name="Blue MM" count="1">
+			<ingredient name="resourceWood" count="1"/>
+		</recipe>
+		<recipe name="Green MM" count="1">
+			<ingredient name="resourceWood" count="1"/>
+		</recipe>
+		<recipe name="Yellow MM" count="1">
+			<ingredient name="resourceWood" count="1"/>
+		</recipe>
+		<recipe name="Red MM" count="1">
+			<ingredient name="resourceWood" count="1"/>
+		</recipe>
+		<recipe name="Orange MM" count="1">
+			<ingredient name="resourceWood" count="1"/>
+		</recipe>
+		<recipe name="Brown MM" count="1">
+			<ingredient name="resourceWood" count="1"/>
+		</recipe>
+		<recipe name="Chocolate Box" count="1">
+			<ingredient name="foodHoney" count="1"/>
+		</recipe>
+		
+	</append>
+	</configs>
